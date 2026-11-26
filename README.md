@@ -19,10 +19,6 @@ A form-based web app, built on the **Rayfin Universal App Template** as a **Micr
 10. [Deploying to Fabric](#deploying-to-fabric)
 11. [Power BI](#power-bi)
 12. [Testing](#testing)
-13. [Troubleshooting](#troubleshooting)
-14. [Known limitations](#known-limitations)
-15. [Roadmap](#roadmap)
-16. [Security and GitHub notes](#security-and-github-notes)
 
 ---
 
