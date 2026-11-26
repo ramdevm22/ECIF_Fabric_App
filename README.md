@@ -146,7 +146,6 @@ Not used: Fabric storage, functions, notebooks, pipelines or lakehouses.
 │           ├── types.ts, scrollTop.ts, ecif.css
 │           └── ecif.test.ts          #   unit tests
 ├── powerbi_views.sql                 # SQL views for Power BI
-└── HANDOVER.md                       # Short hand-over notes
 ```
 
 ---
@@ -279,66 +278,7 @@ npm test
 ```
 The unit tests (`ecif.test.ts`) cover the hours and totals, the summary and CSV output, and the validation and submit rules.
 
-Manual test data: use a sample request with 3 milestones and 5 role lines, such as the dummy dataset in the project documents. Expected result for that set: 340 total hours, milestone sub-total 11,500, travel 500, project total 12,000.
-
 ---
-
-## Troubleshooting
-
-| Problem | Fix |
-|---|---|
-| `CapacityLimitExceeded` / `CapacityNotActive` | The Fabric capacity is full or paused. Ask the Fabric admin to resume or free it. |
-| `unable to get local issuer certificate` (TLS) | Set `NODE_OPTIONS=--use-system-ca` (PowerShell: `$env:NODE_OPTIONS="--use-system-ca"`). Do **not** disable TLS verification. |
-| `db apply` blocked by a table drop | Review the change, then run `npx rayfin up db apply --force` if the drop is intended. |
-| Schema error: text max exceeds 4000 | Use `max` of 4000 or less on `@text`. |
-| Foreign key type error | Foreign key columns must be `@uuid()`. |
-| "Cannot find module" in VS Code | Run *TypeScript: Restart TS Server*. |
-| Review button not visible | Your sign-in email is not in `reviewers.ts`, or you did not run `db apply` and redeploy after editing it. |
-| Delete fails with "other items depend on this record" | The request has review decisions; only a reviewer who owns it can delete it. |
-| Page opens halfway down after choosing a role | Make sure `scrollTop.ts` is in place and `Root.tsx` / `Landing.tsx` use it. |
-
----
-
-## Known limitations
-
-- **Months calculation:** the Excel formula is hidden, so months are estimated as weeks / (52/12). Confirm the real rule in `calc.ts`.
-- **No currency conversion:** the USD / local currency conversion of the Excel sheet is not included.
-- **Mixed currencies:** the reviewer's "total approved" adds amounts of different currencies together.
-- **Approved lock is in the screen only:** the database still lets an owner edit their own rows if they bypass the app.
-- **Reviewers are a fixed email list;** changing it needs `db apply` and a redeploy.
-- **No notifications** (email or Teams) yet.
-- **No history of deleted requests** yet (see roadmap).
-- Direct database access bypasses the app's rules.
-
----
-
-## Roadmap
-
-- Activity history (added, submitted, reopened, removed, decided) kept in its own table
-- "Cancelled" status instead of deleting reviewed requests
-- Database-level lock for approved requests
-- Email or Teams notifications (for example with Power Automate)
-- Supplier lookup by ID
-- Attachments (statements of work, quotes)
-- Real `.xlsx` export that matches the original template
-- Power BI report on the two views
-
----
-
-## Security and GitHub notes
-
-- **Do not commit secrets or environment files** (`.env`, tokens, generated config). Check your `.gitignore` includes `node_modules`, `dist`, `.env*` and any generated Rayfin config.
-- **Do not commit real data**: customer names, supplier details, exported CSV files, screenshots of real requests.
-- `reviewers.ts` contains email addresses. In a **public** repository, use placeholder emails and keep the real list private (or use a private repository).
-- Fabric workspace and item IDs in logs, screenshots or config files should not be published.
-- Keep TLS verification on (see [Troubleshooting](#troubleshooting)).
-
----
-
-## Template
-
-The project started from the Rayfin *Universal App Template* (React, Vite, authentication gate, theming, error boundary, npm workspace with `frontend`, `data` and `shared` packages). The template's own README explained its workspace layout, capability packs (`npm run pack:add -- analytics | functions | storage`) and root commands. Those root commands are listed above; capability packs are not used in this app.
 
 ## License
 
-Add a license file if you want others to reuse the code. If the project is internal to your organisation, say so here and keep the repository private.
