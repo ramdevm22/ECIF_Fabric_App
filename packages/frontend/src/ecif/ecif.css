@@ -128,3 +128,15 @@
 .ecif .landing-note { text-align:center; margin-top:4px; }
 .ecif .landing-bar { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; padding-bottom:0; min-height:0; }
 .ecif .landing-bar-actions { display:flex; gap:8px; flex-wrap:wrap; }
+
+/* Tabs: no blue box on hover or click, only the underline */
+.ecif .tabs button:hover:not(:disabled),
+.ecif .tabs button:active:not(:disabled) {
+  background: transparent;
+  color: var(--e-ink);
+  border-bottom-color: var(--e-brand);
+}
+/* inactive tab on hover: a light grey underline; the active tab keeps its blue underline */
+.ecif .tabs button:hover:not(:disabled):not(.active) {
+  border-bottom-color: var(--e-line-strong);
+}
