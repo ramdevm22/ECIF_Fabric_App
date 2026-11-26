@@ -14,7 +14,7 @@ export default function Landing({ onPick }: { onPick: (r: Role) => void }) {
         <p className="landing-kicker">Microsoft ECIF</p>
         <h1>ECIF Supplier Scope &amp; Milestones</h1>
         <p className="landing-lead">
-          Create, submit and review End Customer Investment Fund (ECIF) requests in one place, instead of passing an Excel template around.
+          Create, submit and review End Customer Investment Fund (ECIF) requests in one place.
         </p>
       </header>
 
