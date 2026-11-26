@@ -1,0 +1,130 @@
+/* ECIF app - Fluent 2 (Microsoft) look. Replaces the whole file. Class names are unchanged. */
+.ecif { --e-bg:#f5f5f5; --e-card:#ffffff; --e-ink:#242424; --e-muted:#616161; --e-line:#e0e0e0; --e-line-strong:#c7c7c7;
+  --e-brand:#0f6cbd; --e-brand-hover:#115ea3; --e-brand-press:#0f548c; --e-red:#b10e1c; --e-redbg:#fdf3f4; --e-ok:#0e700e; --e-warn:#bc4b09;
+  --e-shadow:0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.14);
+  max-width:1200px; margin:0 auto; padding:20px 24px 48px; color:var(--e-ink); background:var(--e-bg); min-height:100vh;
+  font-family:"Segoe UI Variable","Segoe UI",system-ui,-apple-system,Roboto,sans-serif; font-size:14px; line-height:20px; }
+.dark .ecif { --e-bg:#1f1f1f; --e-card:#292929; --e-ink:#ffffff; --e-muted:#adadad; --e-line:#3d3d3d; --e-line-strong:#5c5c5c;
+  --e-brand:#479ef5; --e-brand-hover:#62abf5; --e-brand-press:#2886de; --e-red:#f1707b; --e-redbg:#3b2c2c; --e-ok:#54b054; --e-warn:#f7924a;
+  --e-shadow:0 0 2px rgba(0,0,0,.4), 0 2px 4px rgba(0,0,0,.45); }
+.ecif * { box-sizing:border-box; }
+
+/* Header */
+.ecif .topbar { display:flex; flex-wrap:wrap; gap:12px 16px; align-items:center; justify-content:space-between;
+  background:var(--e-card); border-radius:8px; box-shadow:var(--e-shadow); padding:14px 20px; margin-bottom:16px; }
+.ecif .topbar h1 { font-size:20px; line-height:28px; font-weight:600; margin:0; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.ecif .actions { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+.ecif .actions select { width:auto; min-width:260px; max-width:420px; }
+
+/* Tabs */
+.ecif .tabs { display:flex; gap:4px; margin:0 0 16px; border-bottom:1px solid var(--e-line); overflow-x:auto; }
+.ecif .tabs button { background:none; border:0; border-bottom:2px solid transparent; border-radius:0; padding:10px 14px; color:var(--e-muted);
+  cursor:pointer; white-space:nowrap; font:inherit; font-weight:400; }
+.ecif .tabs button:hover { color:var(--e-ink); background:color-mix(in srgb, var(--e-ink) 5%, transparent); }
+.ecif .tabs button.active { color:var(--e-ink); border-bottom-color:var(--e-brand); font-weight:600; }
+.ecif .tabs button:disabled { opacity:.45; cursor:not-allowed; }
+.ecif .badge { background:var(--e-red); color:#fff; border-radius:10px; padding:0 7px; font-size:12px; line-height:18px; margin-left:6px; display:inline-block; }
+
+/* Cards */
+.ecif .card { background:var(--e-card); border-radius:8px; box-shadow:var(--e-shadow); padding:20px; margin-bottom:16px; }
+.ecif .card h2 { font-size:16px; line-height:22px; font-weight:600; margin:0 0 14px; padding-bottom:10px; border-bottom:1px solid var(--e-line); }
+.ecif .muted { color:var(--e-muted); font-weight:400; font-size:12px; }
+.ecif .row { display:grid; grid-template-columns:1fr 1fr; gap:0 16px; }
+@media (max-width:700px) { .ecif .row { grid-template-columns:1fr; } .ecif { padding:12px; } .ecif .actions select { min-width:0; width:100%; } }
+
+/* Fields */
+.ecif .field { margin-bottom:14px; }
+.ecif .field label { display:block; font-weight:600; margin-bottom:4px; }
+.ecif .star { color:var(--e-red); }
+.ecif input, .ecif select, .ecif textarea { width:100%; padding:6px 10px; min-height:32px; border:1px solid var(--e-line-strong); border-bottom-color:var(--e-muted);
+  border-radius:4px; background:var(--e-card); color:var(--e-ink); font:inherit; }
+.ecif input:hover, .ecif select:hover, .ecif textarea:hover { border-color:var(--e-muted); }
+.ecif input:focus, .ecif select:focus, .ecif textarea:focus { outline:none; border-color:var(--e-line-strong); border-bottom:2px solid var(--e-brand); padding-bottom:5px; }
+.ecif textarea { resize:vertical; }
+.ecif input:disabled, .ecif select:disabled, .ecif textarea:disabled { background:color-mix(in srgb, var(--e-muted) 8%, transparent); }
+.ecif .field.invalid input, .ecif .field.invalid select, .ecif .field.invalid textarea { border-color:var(--e-red); }
+.ecif .hint { font-size:12px; line-height:16px; color:var(--e-muted); margin-top:4px; }
+.ecif .hint.over { color:var(--e-red); font-weight:600; }
+.ecif .error { font-size:12px; color:var(--e-red); margin-top:4px; }
+
+/* Buttons */
+.ecif button { font:inherit; font-weight:600; min-height:32px; padding:5px 14px; border-radius:4px; border:1px solid var(--e-brand); background:var(--e-brand); color:#fff; cursor:pointer; }
+.ecif button:hover:not(:disabled) { background:var(--e-brand-hover); border-color:var(--e-brand-hover); }
+.ecif button:active:not(:disabled) { background:var(--e-brand-press); }
+.ecif button:disabled { opacity:.5; cursor:not-allowed; }
+.ecif button.secondary { background:var(--e-card); color:var(--e-ink); border-color:var(--e-line-strong); }
+.ecif button.secondary:hover:not(:disabled) { background:color-mix(in srgb, var(--e-ink) 6%, var(--e-card)); border-color:var(--e-muted); }
+.ecif button.link { background:none; border:0; color:var(--e-red); padding:0; min-height:0; font-weight:400; }
+.ecif button.link:hover:not(:disabled) { background:none; text-decoration:underline; }
+.ecif button.danger { background:var(--e-card); color:var(--e-red); border-color:var(--e-red); }
+.ecif button.danger:hover:not(:disabled) { background:var(--e-redbg); }
+
+/* Milestones, totals, banners */
+.ecif .milestone { border:1px solid var(--e-line); border-left:3px solid var(--e-brand); border-radius:4px; padding:14px 16px; margin-bottom:14px; background:color-mix(in srgb, var(--e-ink) 2%, var(--e-card)); }
+.ecif .milestone-head { display:flex; justify-content:space-between; margin-bottom:10px; }
+.ecif .totals { display:flex; gap:40px; flex-wrap:wrap; }
+.ecif .totals div { display:flex; flex-direction:column; gap:2px; }
+.ecif .totals span { color:var(--e-muted); font-size:12px; }
+.ecif .totals strong { font-size:24px; line-height:32px; font-weight:600; }
+.ecif .banner { padding:10px 14px; border-radius:4px; margin-bottom:12px; border-left:4px solid; }
+.ecif .banner.ok { background:color-mix(in srgb, var(--e-ok) 12%, var(--e-card)); color:var(--e-ink); border-color:var(--e-ok); }
+.ecif .banner.err { background:var(--e-redbg); color:var(--e-ink); border-color:var(--e-red); }
+.ecif .decision-banner { padding:10px 14px; border-radius:4px; margin-bottom:12px; background:color-mix(in srgb, var(--e-brand) 10%, var(--e-card)); border-left:4px solid var(--e-brand); }
+
+/* Role lines and tables */
+.ecif .role-row { display:grid; grid-template-columns:2fr 1fr 1fr 1fr 1fr auto; gap:8px 12px; align-items:start; border-top:1px solid var(--e-line); padding-top:10px; margin-bottom:6px; }
+.ecif .role-row > button.link { margin-top:30px; }
+@media (max-width:760px) { .ecif .role-row { grid-template-columns:1fr 1fr; } .ecif .role-row > button.link { margin-top:0; } }
+.ecif .summary-head { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+.ecif .table-wrap { overflow-x:auto; margin-top:8px; border:1px solid var(--e-line); border-radius:4px; }
+.ecif table { border-collapse:collapse; width:100%; font-size:13px; }
+.ecif th, .ecif td { border-bottom:1px solid var(--e-line); padding:8px 12px; text-align:left; vertical-align:top; }
+.ecif th { background:color-mix(in srgb, var(--e-ink) 4%, var(--e-card)); font-weight:600; white-space:nowrap; }
+.ecif tbody tr:hover { background:color-mix(in srgb, var(--e-brand) 6%, transparent); }
+.ecif td.desc { min-width:220px; max-width:360px; white-space:pre-wrap; }
+.ecif tfoot td { font-weight:600; background:color-mix(in srgb, var(--e-ink) 4%, var(--e-card)); }
+.ecif .review-table { width:100%; border-collapse:collapse; font-size:14px; }
+.ecif .review-table tr.sel { background:color-mix(in srgb, var(--e-brand) 12%, transparent); }
+
+/* Status chips and lock */
+.ecif fieldset.lock { border:0; padding:0; margin:0; min-width:0; }
+.ecif fieldset.lock:disabled input, .ecif fieldset.lock:disabled select, .ecif fieldset.lock:disabled textarea { opacity:.8; cursor:not-allowed; }
+.ecif .chip { display:inline-block; font-size:12px; line-height:20px; font-weight:600; padding:0 10px; border-radius:10px; vertical-align:middle; }
+.ecif .chip-draft { background:color-mix(in srgb, var(--e-muted) 18%, transparent); color:var(--e-ink); }
+.ecif .chip-submitted { background:color-mix(in srgb, var(--e-ok) 18%, transparent); color:var(--e-ok); }
+.ecif .chip-dirty { background:color-mix(in srgb, var(--e-warn) 18%, transparent); color:var(--e-warn); }
+.ecif.mode-switch { padding-bottom:0; min-height:0; }
+
+/* Phase 7: printing / PDF */
+.ecif .print-only { display:none; }
+@media print {
+  .ecif .no-print, .ecif .banner, .ecif .decision-banner { display:none !important; }
+  .ecif .print-only { display:block; }
+  .ecif { background:#fff; color:#000; padding:0; min-height:0; max-width:none; }
+  .ecif .card { box-shadow:none; border:1px solid #bbb; break-inside:avoid; }
+  .ecif .table-wrap { overflow:visible; border:0; }
+  .ecif table { font-size:10px; }
+  .ecif td.desc { max-width:none; }
+  @page { size:A4 landscape; margin:12mm; }
+}
+
+/* Landing page */
+.ecif.landing { padding-top: 40px; }
+.ecif .landing-hero { text-align:center; margin-bottom:28px; }
+.ecif .landing-kicker { color:var(--e-brand); font-weight:600; text-transform:uppercase; letter-spacing:.08em; font-size:12px; margin:0 0 6px; }
+.ecif .landing-hero h1 { font-size:32px; line-height:40px; font-weight:600; margin:0 0 10px; }
+.ecif .landing-lead { max-width:680px; margin:0 auto; color:var(--e-muted); font-size:16px; line-height:24px; }
+.ecif .landing-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+@media (max-width:760px) { .ecif .landing-grid { grid-template-columns:1fr; } }
+.ecif .landing-card h2 { border-bottom:0; padding-bottom:0; }
+.ecif .landing-steps { margin:0; padding-left:20px; }
+.ecif .landing-steps li { margin-bottom:8px; }
+.ecif .landing-choice { margin-top:12px; }
+.ecif .landing-choice > h2 { font-size:18px; font-weight:600; margin:16px 0 12px; text-align:center; }
+.ecif .landing-role { display:flex; flex-direction:column; gap:10px; border-top:3px solid var(--e-brand); }
+.ecif .landing-role h3 { margin:0; font-size:18px; font-weight:600; }
+.ecif .landing-role p { margin:0; }
+.ecif .landing-role button { align-self:flex-start; margin-top:6px; }
+.ecif .landing-note { text-align:center; margin-top:4px; }
+.ecif .landing-bar { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; padding-bottom:0; min-height:0; }
+.ecif .landing-bar-actions { display:flex; gap:8px; flex-wrap:wrap; }

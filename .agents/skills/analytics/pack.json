@@ -1,0 +1,44 @@
+{
+  "name": "analytics",
+  "description": "Power BI / semantic-model analytics: the `fabric-semanticmodel` connector and the semantic-model query hook. Add the visuals pack alongside it to chart what the queries return.",
+  "packageJson": "packages/frontend/package.json",
+  "rayfin": {
+    "services": {
+      "connectors": {
+        "enabled": true
+      }
+    }
+  },
+  "dependencies": {
+    "@microsoft/rayfin-connectors": "match:@microsoft/rayfin-core",
+    "@microsoft/rayfin-connector-fabric-semanticmodel": "match:@microsoft/rayfin-core"
+  },
+  "scripts": {
+    "schema:sql": "node --disable-warning=ExperimentalWarning scripts/schema-sql.mjs",
+    "schema:refresh": "node --disable-warning=ExperimentalWarning scripts/schema-sql.mjs --refresh"
+  },
+  "scriptFlags": {
+    "schema:sql": "schema-sqlite",
+    "schema:refresh": "schema-sqlite"
+  },
+  "gitignore": [".schema/", ".rayfin-schema-query-*/"],
+  "copy": [
+    { "from": "kit/hooks", "to": "packages/frontend/src/hooks" },
+    {
+      "from": "kit/scripts/rayfin-connector.mjs",
+      "to": "scripts/rayfin-connector.mjs",
+      "whenFlag": "schema-sqlite"
+    },
+    {
+      "from": "kit/scripts/schema.mjs",
+      "to": "scripts/schema.mjs",
+      "whenFlag": "schema-sqlite"
+    },
+    {
+      "from": "kit/scripts/schema-sql.mjs",
+      "to": "scripts/schema-sql.mjs",
+      "whenFlag": "schema-sqlite"
+    }
+  ],
+  "next": ["analytics"]
+}
